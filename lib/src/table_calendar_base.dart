@@ -298,6 +298,8 @@ class _TableCalendarBaseState extends State<TableCalendarBase>
       return 2;
     } else if (format == CalendarFormat.week) {
       return 1;
+    } else if (format == CalendarFormat.year) {
+      return 2;
     } else if (widget.sixWeekMonthsEnforced) {
       return 6;
     }
