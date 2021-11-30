@@ -111,6 +111,16 @@ class CellContent extends StatelessWidget {
             alignment: alignment,
             child: Text(text, style: calendarStyle.rangeEndTextStyle),
           );
+    } else if (isOutside) {
+      cell = calendarBuilders.outsideBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+            duration: duration,
+            margin: margin,
+            padding: padding,
+            decoration: calendarStyle.outsideDecoration,
+            alignment: alignment,
+            child: Text(text, style: calendarStyle.outsideTextStyle),
+          );
     } else if (isToday && isTodayHighlighted) {
       cell = calendarBuilders.todayBuilder?.call(context, day, focusedDay) ??
           AnimatedContainer(
@@ -142,16 +152,6 @@ class CellContent extends StatelessWidget {
                 alignment: alignment,
                 child: Text(text, style: calendarStyle.withinRangeTextStyle),
               );
-    } else if (isOutside) {
-      cell = calendarBuilders.outsideBuilder?.call(context, day, focusedDay) ??
-          AnimatedContainer(
-            duration: duration,
-            margin: margin,
-            padding: padding,
-            decoration: calendarStyle.outsideDecoration,
-            alignment: alignment,
-            child: Text(text, style: calendarStyle.outsideTextStyle),
-          );
     } else {
       cell = calendarBuilders.defaultBuilder?.call(context, day, focusedDay) ??
           AnimatedContainer(
